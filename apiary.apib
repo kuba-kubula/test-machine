@@ -1,47 +1,62 @@
 FORMAT: 1A
-HOST: http://www.google.com
+HOST: http://www.gravatar.com
 
-# Notes API
-Notes API is a *short texts saving* service similar to its physical paper presence on your table.
+# Gravatar
 
-# Group Notes
-Notes related resources of the **Notes API**
+# Group Avatar
 
-## Notes Collection [/notes]
-### List all Notes [GET]
-+ Response 200 (application/json)
-
-        [{
-          "id": 1, "title": "Jogging in park"
-        }, {
-          "id": 2, "title": "Pick-up posters from post-office"
-        }]
-
-### Create a Note [POST]
-+ Request (application/json)
-
-        { "title": "Buy cheese and bread for breakfast." }
-
-+ Response 201 (application/json)
-
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
-
-## Note [/notes/{id}]
-A single Note object with all its details
+## Notes Collection [/notes/{?param1,param2,param3}]
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
 
-### Retrieve a Note [GET]
-+ Response 200 (application/json)
+    + param1 (optional, string, `aaz`) ... param1 is aaz
+    + param2 (optional, string, `vvv`) ... param2 is vvv
 
-    + Header
+### here [GET]
++ Response 200
 
-            X-My-Header: The Value
+        == Here be lions ==
+    
+
+## Image Collection [/avatar/{hash}.jpg{?id,query}]
+Whatever is a Gravatar, it lives...
+
++ Parameters
+
+    + id (string) ... whatever
+    + hash (string, `ba9e69315d0f4460caae5242bb93c745`) ... The md5 hash of lower-cased email address
+    + query (string, `d=mm`) ... the query to tweak the returned image
+
+### Does it exist? [HEAD]
++ Response 200
+
+    + Headers
+
+            Content-type: image/jpeg
+            Content-Length: 1000
+            Server: nginx
+
+### Update an avatar [POST]
++ Request
+
+        call me
+
++ Response 200
+
+        called with 200
+
+### Retrieve an avatar [GET]
++ Parameters
+
+    + aa (aa) ... aa
+    + iii (string) ... aaaa
+    + hash (string, `1234567890`) ... The md5 hash of lower-cased email address
+    + hashme (string, `bbb`) ... trrrt
+    + aaa (aaa) ... bbb
+
++ Response 200
+All is there
 
     + Body
 
-            { "id": 2, "title": "Pick-up posters from post-office" }
-
-### Remove a Note [DELETE]
-+ Response 204
+            [binary content]
